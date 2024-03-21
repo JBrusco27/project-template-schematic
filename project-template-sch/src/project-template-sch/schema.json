@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "project-template-sch",
+    "title": "Project Template Schema",
+    "type": "object",
+    "properties": {
+        "projectName": {
+            "description": "The name of the project",
+            "type": "string",
+            "x-prompt": "Project name >",
+            "default": "blank-project"
+        },
+        "specificComponentName": {
+            "description": "Take the name of the first specific component",
+            "type": "string",
+            "x-prompt": "Specific component name >",
+            "default": "default-component"
+        },
+        "prodApiUrl": {
+            "description": "Take the production api url",
+            "type": "string",
+            "x-prompt": "Production api url >",
+            "default": "http://localhost:3000"
+        },
+        "qaApiUrl": {
+            "description": "Take the QA api url",
+            "type": "string",
+            "x-prompt": "QA api url >",
+            "default": "http://localhost:3000"
+        },
+        "devApiUrl": {
+            "description": "Take the dev api url",
+            "type": "string",
+            "x-prompt": "Dev api url >",
+            "default": "http://localhost:3000"
+        }
+    },
+    "required": []
+}

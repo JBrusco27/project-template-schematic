@@ -1,0 +1,21 @@
+.example-spacer {
+	flex: 1 1 auto;
+}
+
+.tool-bar-right-section{
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+a.title_link:link,
+a.title_link:visited {
+	color: #ffd740;
+	text-decoration: none;
+	font-size: 1.8rem;
+}
+
+a.title_link:hover {
+	color: #e1bc3a;
+	text-decoration: dashed;
+}

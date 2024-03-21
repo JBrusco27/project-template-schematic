@@ -1,0 +1,61 @@
+<form [formGroup]="formService.form" class="normal-form" (ngSubmit)="onSubmit()">
+	<mat-card appearance="outlined" class="w-full md:w-3/4 lg:w-1/2">
+		<div class="page-title mt-3">
+			<h1>Crear un usuario</h1>
+		</div>
+		<mat-card-content>
+			<div class="form-row">
+				<mat-form-field style="width: 95%; margin-bottom: 10px" appearance="fill">
+					<mat-label>Nombre</mat-label>
+					<input formControlName="primer_nombre_usuario" matInput #primer_nombre_usuario_input maxlength="255" />
+					<mat-icon matSuffix>badge</mat-icon>
+					<mat-error *ngIf="formService.form.get('primer_nombre_usuario')?.errors">Nombre es obligatorio.</mat-error>
+				</mat-form-field>
+				<mat-form-field style="width: 95%; margin-bottom: 10px" appearance="fill">
+					<mat-label>Apellido</mat-label>
+					<input formControlName="apellido_paterno_usuario" matInput #apellido_paterno_usuario_input maxlength="255" />
+					<mat-icon matSuffix>badge</mat-icon>
+					<mat-error *ngIf="formService.form.get('apellido_paterno_usuario')?.errors">Apellido es obligatorio.</mat-error>
+				</mat-form-field>
+				<mat-form-field style="width: 95%; margin-bottom: 10px" appearance="fill">
+					<mat-label>Correo</mat-label>
+					<input formControlName="correo_usuario" matInput #correo_usuario_input maxlength="255" />
+					<mat-icon matSuffix>email</mat-icon>
+					<!-- <mat-error *ngIf="formService.form.get('correo_usuario')?.errors && !formService.form.get('correo_usuario')?.errors?.repeatedValue">No es un correo válido.</mat-error>
+					<mat-error *ngIf="formService.form.get('correo_usuario')?.errors?.repeatedValue">Ya existe una cuenta con ese correo.</mat-error> -->
+				</mat-form-field>
+				<mat-form-field style="width: 95%; margin-bottom: 10px" appearance="fill">
+					<mat-label>Contraseña</mat-label>
+					<input formControlName="contrasena_usuario" type="password" matInput #contrasena_usuario_input maxlength="255" />
+					<mat-icon matSuffix>password</mat-icon>
+					<mat-error *ngIf="formService.form.get('contrasena_usuario')?.hasError('notSamePass')">Contraseñas distintas.</mat-error>
+					<mat-error *ngIf="formService.form.get('contrasena_usuario')?.hasError('minLength')">Mínimo 8 letras o números.</mat-error>
+				</mat-form-field>
+				<mat-form-field style="width: 95%; margin-bottom: 10px" appearance="fill">
+					<mat-label>Repetir Contraseña</mat-label>
+					<input formControlName="contrasena_usuario_confirmacion" type="password" matInput #contrasena_usuario_confirmacion_input maxlength="255" />
+					<mat-icon matSuffix>password</mat-icon>
+					<mat-error *ngIf="formService.form.get('contrasena_usuario_confirmacion')?.hasError('notSamePass')">Contraseñas distintas.</mat-error>
+					<mat-error *ngIf="formService.form.get('contrasena_usuario_confirmacion')?.hasError('minLength')">Mínimo 8 letras o números.</mat-error>
+				</mat-form-field>
+			</div>
+		</mat-card-content>
+		<mat-card-actions class="button-container mb-5">
+			<button
+				mat-stroked-button
+				matDialogClose="cancelar"
+				type="button"
+				(click)="onCancel()"
+			>Cancelar</button>
+			<button
+				mat-raised-button
+				color="accent"
+				type="submit"
+				[disabled]="formService.form.invalid"
+			>
+				<mat-icon>how_to_reg</mat-icon>
+				Crear cuenta!
+			</button>
+		</mat-card-actions>
+	</mat-card>
+</form>

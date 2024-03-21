@@ -1,0 +1,22 @@
+mat-form-field {
+	width: 100%;
+}
+
+.suggestion {
+	padding: 10px;
+    color:white;
+}
+
+.button-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.page-subtitle h1{
+	color: white;
+	font-weight: 500 !important;
+}
+
+.page-subtitle h1:before, .page-subtitle h1:after{
+    background-color: #ffffff;
+}

@@ -1,0 +1,80 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, catchError, firstValueFrom, map, of, tap } from 'rxjs';
+import { constants } from 'src/app/shared/api.constants';
+import { <%= classify(specificComponent) %> } from 'src/app/shared/models/<%= dasherize(specificComponent) %>.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class <%= classify(specificComponent) %>Service {
+
+  constructor(
+    private http: HttpClient, 
+  ) {}
+
+  async get<%= classify(specificComponent) %>(
+      filter: string = '',
+      sort: string = 'asc',
+      sortColumn: string = 'id_<%= underscore(specificComponent) %>',
+      pageNumber: number = 0,
+      pageSize: number = 10,
+      categoria?: string | undefined
+  ): Promise<<%= classify(specificComponent) %>[]> {
+      console.log(categoria);
+      return await firstValueFrom(this.http
+          .get<<%= classify(specificComponent) %>[]>(constants.API_<%= underscore(specificComponentUppercase) %>, {
+              params: new HttpParams()
+                  .set('filter', filter)
+                  .set('sort', sort)
+                  .set('sortColumn', sortColumn)
+                  .set('pageNumber', pageNumber.toString())
+                  .set('pageSize', pageSize.toString())
+                  .set('categoria', categoria ? categoria?.toString() : ''),
+          })
+          .pipe(
+              tap( console.log ),
+              catchError( (error) => of(error))
+          ));
+  }
+
+  async get<%= classify(specificComponent) %>Datos(id<%= classify(specificComponent) %>: number | undefined): Promise<any> {
+      if (<%= classify(specificComponent) %>) {
+          return await firstValueFrom(this.http
+              .get<any>(constants.API_<%= underscore(specificComponentUppercase) %> + `/<%= classify(specificComponent) %>Datos/${id<%= classify(specificComponent) %>}`)
+              .pipe(
+                  catchError( (error) => of(error))
+          ));
+      } else {
+          return of();
+      }
+  }
+
+  async postCrear<%= classify(specificComponent) %>(<%= camelize(specificComponent) %>: Partial<<%= classify(specificComponent) %>>): Promise<any> {
+      return await firstValueFrom(this.http
+          .post<any>(constants.API_<%= underscore(specificComponentUppercase) %>, <%= camelize(specificComponent) %>)
+          .pipe(
+              tap( console.log ),
+              catchError( (error) => of(error))
+          ));
+  }
+
+  async upload(formData: any) {
+  return await firstValueFrom(this.http.post<any>(
+    constants.API<%= underscore(specificComponentUppercase) %> + '/upload',
+    formData,
+    { reportProgress: false, observe: 'events' }
+  ));
+  }
+
+  async deleteArchivoCampo(campoId: number): Promise<any> {
+      return await firstValueFrom(this.http
+          .delete<any>(`${constants.API_<%= underscore(specificComponentUppercase) %>}/deleteArchivoCampo/${campoId}`)
+          .pipe(
+              map( (response: any) => response.data ),
+              catchError( (error) => of(error))
+          ));
+  }
+
+
+}

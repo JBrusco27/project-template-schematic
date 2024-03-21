@@ -1,0 +1,80 @@
+<div class="mat-elevation-z8">
+    <mat-toolbar class="flex flex-row justify-between">
+        <span>Lista de Usuarios</span>
+        <button
+            mat-mini-fab
+            color="primary"
+            matTooltip="Crear Usuario"
+            matTooltipPosition="below"
+            [routerLink]="'/usuarios/crear'"
+            *ngIf="isLogged()"
+            aria-label="Crear Usuario"
+        >
+            <mat-icon>add</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <table mat-table class="full-width-table" matSort aria-label="Elements" matSortActive="id_usuario"
+        matSortDirection="asc" matSortDisableClear>
+        <ng-container matColumnDef="primer_nombre_usuario">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+            <td mat-cell *matCellDef="let user">{{ user.primer_nombre_usuario }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="apellido_paterno_usuario">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
+            <td mat-cell *matCellDef="let user">{{ user.apellido_paterno_usuario }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="correo_usuario">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Correo</th>
+            <td mat-cell *matCellDef="let user">{{ user.correo_usuario }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="fecha_creacion_usuario">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Creado</th>
+            <td mat-cell *matCellDef="let user">{{ user.fecha_creacion_usuario | date : 'dd-MM-YYYY' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="user_active">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+            <td mat-cell *matCellDef="let user">
+                {{ user.user_active ? 'Activo' : 'Inactivo' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+            <td mat-cell *matCellDef="let user">
+                <span style="display: flex; flex-direction: row; justify-content: flex-start">
+                    <a style="cursor: pointer" (click)="onDeleteUser(user)" matTooltip="Eliminar Usuario">
+                        <mat-icon class="icon nav-icon" color="warn">delete</mat-icon>
+                    </a>
+                    <a style="cursor: pointer" (click)="onEditUser(user)" matTooltip="Editar Usuario">
+                        <mat-icon class="icon nav-icon" color="primary">edit</mat-icon>
+                    </a>
+                    <mat-slide-toggle (change)="onSetStatus(user)" [checked]="user.user_active"
+                        matTooltip="{{ user.user_active ? 'Inactivar usuario' : 'Activar usuario' }}"
+                        style="margin-bottom: 15px; padding: 0"></mat-slide-toggle>
+                </span>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let user; columns: displayedColumns"></tr>
+    </table>
+    
+    <mat-paginator #paginator [length]="dataSource.totalCount" [pageIndex]="0" [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 50]"> </mat-paginator>
+</div>
+
+<ng-template #deletePopup>
+    <h2 matDialogTitle>Eliminar Usuario?</h2>
+    <mat-dialog-content>
+        <p></p>
+    </mat-dialog-content>
+    <mat-dialog-actions class="button-container">
+        <button mat-stroked-button matDialogClose="cancelar">Cancelar</button>
+        <button mat-raised-button matDialogClose="eliminar" color="warn">Eliminar</button>
+    </mat-dialog-actions>
+</ng-template>

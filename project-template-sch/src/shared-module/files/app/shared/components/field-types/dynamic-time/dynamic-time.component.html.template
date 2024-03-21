@@ -1,0 +1,6 @@
+<form [formGroup]="formName">
+    <label>{{ field.label }}</label>
+    <mat-form-field class="my-2">
+        <input [formControlName]="field.fieldName" matInput type="time">
+    </mat-form-field>
+</form>

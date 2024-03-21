@@ -1,0 +1,31 @@
+.mat-drawer-container{
+    flex: 1;
+}
+
+.main-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+mat-sidenav {
+    width: fit-content;
+}
+
+.content .top {
+    justify-content: normal;
+}
+
+.footer-relative {
+    position: relative;
+    width: 100%;
+    margin-top: auto;
+    bottom: 0;
+}
+
+.footer-absolute {
+    position: absolute;
+    width: 100%;
+    margin-top: auto;
+    bottom: 0;
+}

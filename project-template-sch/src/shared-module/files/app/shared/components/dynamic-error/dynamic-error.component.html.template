@@ -1,0 +1,7 @@
+<span
+    *ngIf="formName.controls[fieldName].invalid && (formName.controls[fieldName].dirty || formName.controls[fieldName].touched)"
+>
+    <span *ngIf="formName.controls[fieldName]?.errors?.['required']" class="text-red-500 mt-0 mb-8">
+        * "{{fieldLabel}}" es obligatorio.
+    </span>
+</span>

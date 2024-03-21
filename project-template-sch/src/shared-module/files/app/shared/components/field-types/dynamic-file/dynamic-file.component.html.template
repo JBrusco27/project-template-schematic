@@ -1,0 +1,36 @@
+<form [formGroup]="formName">
+    <label>{{ field.label }}</label>
+    <div class="p-2 my-4 outline">
+        <input
+            type="file"
+            class="file-input"
+            (change)="onFileSelected($event)"
+            #fileUpload
+            [accept]="field.options.length ? field.options[0].value : ''"
+        >
+        <input type="text" [formControlName]="field.fieldName" style="display: none;">
+        <div class="flex align-middle">
+            <span class="p-0 break-all" *ngIf="fileName">{{ fileName }}</span>
+            <span class="p-0 break-all" *ngIf="!fileName && field.value">{{ "Cargar otro archivo. (" + fileTypeConverted + ")" }}</span>
+            <span class="p-0 break-all" *ngIf="!fileName && !field.value">{{ "Ningún archivo cargado todavía. (" + fileTypeConverted + ")" }}</span>
+            <button mat-mini-fab color="primary" class="upload-btn ml-4" (click)="fileUpload.click()">
+                <mat-icon>attach_file</mat-icon>
+            </button>
+        </div>
+        <div *ngIf="field.value">
+            Archivo cargado: 
+            <!-- <a
+                href="{{ fileServer + '/' + field.value }}"
+                target="_blank"
+                class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline mt-5"
+            >
+                {{ field.value }}
+            </a> -->
+            <mat-icon
+                color="warn"
+                class="ml-3 cursor-pointer"
+                (click)="verificaEliminar(field)"
+            >delete</mat-icon>
+        </div>
+    </div>
+</form>

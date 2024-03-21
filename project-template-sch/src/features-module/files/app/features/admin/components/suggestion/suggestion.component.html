@@ -1,0 +1,37 @@
+<form [formGroup]="formService.form" class="normal-form" (ngSubmit)="onSubmit()" *ngIf="!suggestionSent">
+    <div class="page-subtitle">
+		<h1>Sugerencia</h1>
+	</div>
+	<mat-dialog-content>
+		<div class="form-row">
+			<mat-form-field appearance="fill">
+				<textarea rows="10" class="boxsizingBorder" style="width: 100%" formControlName="suggestion_text" matInput></textarea>
+				<mat-hint>Reporta un error o sugiere un cambio en esta app.</mat-hint>
+			</mat-form-field>
+		</div>
+	</mat-dialog-content>
+	<mat-dialog-actions class="button-container">
+		<button
+			mat-stroked-button
+			type="button"
+			(click)="close()"
+		>
+			Cerrar
+		</button>
+		<button
+			mat-raised-button
+			color="accent"
+			type="submit"
+			[disabled]="formService.form.invalid"
+		>
+			<mat-icon>tips_and_updates</mat-icon>
+			Enviar
+		</button>
+	</mat-dialog-actions>
+</form>
+
+<div *ngIf="suggestionSent">
+	<mat-dialog-content>
+		<div class="modal_title">Gracias por la sugerencia! 😁</div>
+	</mat-dialog-content>
+</div>

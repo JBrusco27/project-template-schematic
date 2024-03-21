@@ -1,0 +1,10 @@
+<form [formGroup]="formName">
+    <mat-form-field>
+        <mat-label>{{ field.label }}</mat-label>
+        <input
+            matInput
+            [formControlName]="field.fieldName"
+            [type]="field.type"
+            [value]="field.value" />
+    </mat-form-field>
+</form>

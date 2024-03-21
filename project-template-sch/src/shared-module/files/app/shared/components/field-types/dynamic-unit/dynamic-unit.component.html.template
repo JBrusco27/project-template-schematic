@@ -1,0 +1,13 @@
+<form [formGroup]="formName">
+    <mat-form-field>
+        <mat-label>{{ field.label }}</mat-label>
+        <mat-select [formControlName]="field.fieldName">
+            <mat-option value="metros">Metros</mat-option>
+            <mat-option value="kilometros">Kilómetros</mat-option>
+            <mat-option value="centimetros">Centímetros</mat-option>
+            <mat-option value="pulgadas">Pulgadas</mat-option>
+            <mat-option value="yardas">Yardas</mat-option>
+            <mat-option value="millas">Millas</mat-option>
+        </mat-select>  
+    </mat-form-field>
+</form>

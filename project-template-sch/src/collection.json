@@ -1,0 +1,30 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "project-template-sch": {
+      "description": "A blank schematic.",
+      "factory": "./project-template-sch/index#projectTemplateSch",
+      "schema": "./project-template-sch/schema.json"
+    },
+    "core-module": {
+      "description": "Generation of Core Module",
+      "factory": "./core-module/index#coreModule",
+      "schema": "./core-module/schema.json"
+    },
+    "features-module": {
+      "description": "Generation of Features Module",
+      "factory": "./features-module/index#featuresModule",
+      "schema": "./features-module/schema.json"
+    },
+    "shared-module": {
+      "description": "Generation of Shared Module",
+      "factory": "./shared-module/index#sharedModule",
+      "schema": "./shared-module/schema.json"
+    },
+    "add-dependency": {
+      "description": "Install dependencies",
+      "factory": "./add-dependency/index#installDependency",
+      "schema": "./add-dependency/schema.json"
+    }
+  }
+}

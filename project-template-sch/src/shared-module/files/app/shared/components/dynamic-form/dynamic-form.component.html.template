@@ -1,0 +1,45 @@
+<form [formGroup]="dynamicFormGroup">
+    <mat-dialog-content class="mat-typography">
+
+        <div *ngFor="let field of fields" class="flex flex-col">
+            <app-dynamic-field [field]="field"></app-dynamic-field>
+            <app-dynamic-error class="mb-6" [fieldName]="field.fieldName" [fieldLabel]="field.label"></app-dynamic-error>
+        </div>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions style="display: flex; justify-content: space-between; flex-direction: row; margin-left: 20px; margin-right: 20px;">
+        <button
+            mat-stroked-button
+            color="warn"
+            mat-dialog-close
+        >
+            <mat-icon>remove</mat-icon>
+            Cancel
+        </button>
+        <!-- <button
+            [disabled]="!dynamicFormGroup.valid" 
+            type="button"
+            class="md-small"
+            mat-raised-button
+            color="accent"
+            [mat-dialog-close]="true"
+            (click)="saveForm()"
+        >
+            <mat-icon>save</mat-icon>
+            Guardar
+        </button> -->
+    </mat-dialog-actions>
+    <!-- <mat-dialog-actions style="display: flex; justify-content: flex-end; flex-direction: row; margin-right: 20px;">
+        <button
+            mat-raised-button
+            color="accent"
+            type="button"
+        >
+            <mat-icon>save</mat-icon>
+            Guardar Avance
+        </button>
+    </mat-dialog-actions> -->
+
+
+</form>

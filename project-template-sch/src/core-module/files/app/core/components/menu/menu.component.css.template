@@ -1,0 +1,30 @@
+.nav-icon {
+	padding: 0 8px;
+	width: fit-content;
+}
+
+.menu-active {
+	background-color: #673ab7 !important;
+	color: white;
+}
+
+.menu-active-text {
+	color: white;
+}
+
+.menu_item {
+	display: flex;
+	justify-content: last baseline;
+}
+
+.content {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	height: 100%;
+	width: fit-content;
+}
+
+.content .top {
+	justify-content: normal;
+}

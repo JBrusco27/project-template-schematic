@@ -1,0 +1,16 @@
+<form [formGroup]="formName">
+    <ng-container [ngSwitch]="field.type">
+        <app-dynamic-input *ngSwitchCase="'text'" [field]="field"></app-dynamic-input>
+        <app-dynamic-textarea *ngSwitchCase="'textarea'" [field]="field"></app-dynamic-textarea>
+        <app-dynamic-date *ngSwitchCase="'date'" [field]="field"></app-dynamic-date>
+        <app-dynamic-file *ngSwitchCase="'file'" [field]="field"></app-dynamic-file>
+        <app-dynamic-input *ngSwitchCase="'number'" [field]="field"></app-dynamic-input>
+        <app-dynamic-select *ngSwitchCase="'select'" [field]="field"></app-dynamic-select>
+        <app-dynamic-radio *ngSwitchCase="'radio'" [field]="field"></app-dynamic-radio>
+        <app-dynamic-checkbox *ngSwitchCase="'checkbox'" [field]="field"></app-dynamic-checkbox>
+        <app-dynamic-time *ngSwitchCase="'time'" [field]="field"></app-dynamic-time>
+        <app-dynamic-country *ngSwitchCase="'country'" [field]="field"></app-dynamic-country>
+        <app-dynamic-timezone *ngSwitchCase="'timezone'" [field]="field"></app-dynamic-timezone>
+        <app-dynamic-unit *ngSwitchCase="'unit'" [field]="field"></app-dynamic-unit>
+    </ng-container>
+</form>

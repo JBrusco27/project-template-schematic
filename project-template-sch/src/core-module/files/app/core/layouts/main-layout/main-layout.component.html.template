@@ -1,0 +1,13 @@
+<app-loader></app-loader>
+<div class="main-container">
+    <app-toolbar (toggleMenu)="drawer.toggle()"></app-toolbar>
+    <mat-sidenav-container>
+        <mat-sidenav #drawer [mode]="menuType()">
+            <app-menu (toggleMenu)="drawer.toggle()"></app-menu>
+        </mat-sidenav>
+        <mat-sidenav-content (scroll)="onScroll($event)" style="overflow-x: hidden;">
+            <router-outlet></router-outlet>
+            <!-- <app-footer class="footer" [ngClass]="footerPosition"></app-footer> -->
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

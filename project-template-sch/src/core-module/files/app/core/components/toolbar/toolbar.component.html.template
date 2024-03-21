@@ -1,0 +1,39 @@
+<mat-toolbar color="primary" class="mat-elevation-z8 mt-5">
+
+	<section class="tool-bar-right-section">
+		<button mat-icon-button (click)="onToggleMenu()">
+			<mat-icon>menu</mat-icon>
+		</button>
+
+		<span *ngIf="screenWidth > 768; else toolbarRedTitle">
+			<a class="title_link blur-in"> <%= projectName %> </a>
+		  </span>
+		  <ng-template #toolbarRedTitle>
+			<a class="title_link blur-in"></a>
+		  </ng-template>
+	</section>
+
+	<span class="example-spacer"></span>
+
+	<section class="tool-bar-right-section">
+
+		<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="">
+			<mat-icon>more_vert</mat-icon>
+		</button>
+
+	</section>
+
+	<mat-menu #menu="matMenu">
+		<button mat-menu-item class="example-icon favorite-icon" [routerLink]="'/admin/help-info'" aria-label="Ayuda!">
+			<mat-icon class="example-icon">help</mat-icon>
+			<span>Ayuda!</span>
+		</button>
+
+		<button mat-menu-item class="example-icon favorite-icon" (click)="openSuggestionForm()" aria-label="Sugerencias">
+			<mat-icon class="example-icon">tips_and_updates</mat-icon>
+			<span>Sugerencias</span>
+		</button>
+
+	</mat-menu>
+
+</mat-toolbar>

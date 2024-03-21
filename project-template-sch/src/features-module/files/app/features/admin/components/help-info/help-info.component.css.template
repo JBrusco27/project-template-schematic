@@ -1,0 +1,21 @@
+.page-title{
+    margin:20px;
+}
+
+.mat-accordion{
+    margin: 0 20px;
+    display:block;
+}
+
+.mat-expansion-panel-header{
+    min-height: 60px;
+    padding: 10px 24px;
+    height: fit-content;
+}
+
+.mat-expansion-panel-header-title{
+    font-size: 25px;
+    line-height: normal;
+    font-weight: 500;
+}
+
